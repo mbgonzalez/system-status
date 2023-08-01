@@ -8,7 +8,7 @@ free_space=$(echo $disk_space | awk '{print $3}')
 #get ram
 total_ram=$(free -h | awk '/^Mem:/ {print $2}')
 used_ram=$(free -h | awk '/^Mem:/ {print $3}')
-percent_used=$(echo $disk_space | awk '{print $2/$3 * 100}')
+percent_used=$(echo $disk_space | awk '{print 100*$2/$1}')
 percent_ram=$(free | awk '/^Mem:/ {print $3/$2 * 100.0}' | cut -c1-4)
 
 # get cpu
